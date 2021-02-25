@@ -1,0 +1,27 @@
+<!--pages/Mine/index.wxml-->
+ <image style="position:fixed;width:100vw;height:100vh;z-index:1" src="../../images/photo-1471974507711-fe913f4b4509.jpg"></image>
+ <view class="content">
+   <image style="width:250rpx;height:230rpx;box-shadow: 2px 3px 3px 0px #424242;border-radius: 100%;" src="/images/logo.png"></image>
+    <view class="logo">智慧实验室</view>
+    <van-field
+    input-class="inpt"
+    value="{{ username }}"
+    clearable 
+    placeholder="请输入账号名称"
+    bind:change="onChange"
+  />
+  <van-field
+    input-class="inpt"
+    value="{{ password }}"
+    clearable 
+    password
+    placeholder="请输入密码"
+    bind:change="onChange1"
+  />
+  <view class="login">
+    <van-icon  bindtap="submit" color="#fff" size="40rpx" name="arrow" />
+  </view>
+  
+ </view>
+ <van-toast id="van-toast" />
+

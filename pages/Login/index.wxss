@@ -1,0 +1,42 @@
+.content{
+    position: fixed;
+    display: flex;
+    flex-direction:column;
+    width: 70vw;
+    height:100vh;
+    left:16vw;
+    top:15vh;
+    align-items:center;
+    z-index: 999;
+}
+.logo{
+    font-size: 34px;
+    font-weight: 600;
+    color:#fff;
+    margin-top:20rpx;
+    text-shadow: 1px 1px 0 black;
+}
+.van-cell{
+    margin-top: 80rpx;
+    border: 1px solid #e4e4e4;
+    background: #fff !important;
+    width: 75vw !important;
+    box-shadow: 0 2px 1px 1px rgb(173, 173, 173);
+    border-radius: 50rpx;
+    padding:var(--cell-vertical-padding,7px) var(--cell-horizontal-padding,25px) !important;
+}
+.login{
+    margin-top:80rpx;
+    width:80rpx ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:80rpx ;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 1px solid #fff !important;
+}
+.van-field__input{
+    color:#b8b6b6 !important;
+    font-size: 14px;
+}

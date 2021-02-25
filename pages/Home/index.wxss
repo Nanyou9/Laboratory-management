@@ -1,0 +1,50 @@
+/**index.wxss**/
+
+
+.bg{
+    background: #fff;
+    height:100vh;
+    overflow:scroll;overflow-y:hidden
+  }
+  .van-grid-item__content{
+    background: transparent !important;
+  }
+  .van-info{
+    background-color:#1088ad !important;
+    box-shadow: 0px 1px 3px #545252;
+  }
+  .topnav image{
+    position: relative;
+    left: 0;
+    top:0;
+    width:100vw;
+    height:100vh;
+  }
+  .van-grid-item{
+    padding-bottom:15rpx
+  }
+  .container{
+    padding:0;
+  }
+  .grid{
+    margin-top: 10px;
+  }
+  .logo{
+    font-size: 34px;
+      font-weight: 600;
+      color: rgb(249, 255, 255);
+      text-shadow: 2px 2px 0 black;
+      margin-top:40rpx;
+  }
+  .content{
+    position: absolute;
+    border-radius: 50rpx;
+    background-color: rgba(255, 255, 255, 0.8);
+    bottom:50rpx;
+    width:90vw;
+    
+  }
+  
+  .custom-class{
+    border:0;
+  }

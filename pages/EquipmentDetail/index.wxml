@@ -1,0 +1,102 @@
+<view class="bg">
+  <view class="topnav">
+  <image src="/images/equipment.jpg"></image>
+  </view>
+  <van-tabs active="{{ activeNames }}" bind:change="onChange">
+  <van-tab title="设备详情">
+    <view class="fields">
+     <van-cell-group input-class="inp">
+       <van-field
+       input-class="inp"
+         value="{{ detailData.EquipmentCode }}"
+         border="{{ false }}"
+         type="textarea"
+         autosize
+         label="设备编码:" 
+       />
+       <van-fielda
+         input-class="inp"
+         border="{{ false }}"
+         readonly="true"
+         type="textarea"
+         value="{{ detailData.EquipmentModelID }}"
+         label="设备类型编号:"
+       />
+       <van-field
+         value=""
+         border="{{ false }}"
+         value="{{ detailData.EquipmentModelName }}"
+         readonly="true"
+         label="设备名称:"
+       />
+       <van-field
+         value="{{ detailData.UniversityName }}"
+         border="{{ false }}"
+         readonly="true"
+         type="textarea"
+         autosize
+         label="所属学校:"
+       />
+       <van-field
+         value="{{ detailData.CollegeName }}"
+         border="{{ false }}"
+         autosize
+         readonly="true"
+         label="所属学院:"
+       />
+       <van-field
+         value="{{ detailData.BuildingName }}"
+         border="{{ false }}"
+         readonly="true"
+         autosize
+         label="所属大楼:"
+       />
+       <van-field
+         value="{{ detailData.FloorNum + '楼'}}"
+         border="{{ false }}"
+         readonly="true"
+         autosize
+         label="所属楼层:"
+       />
+       <van-field
+         value="{{ detailData.RoomName }}"
+         border="{{ false }}"
+         readonly="true"
+         type="textarea"
+         label="所在实验室"
+         autosize
+       />
+     </van-cell-group>
+     </view>
+  </van-tab>
+  <van-tab title="设备日志报告">
+    <view style="height:15px;width:100vw"></view>
+    <view class="card" wx:for-items="{{userData}}" wx:key="index" >
+    <van-card 
+    desc="{{item.EquipmentTypeName}}" 
+    > 
+   <view slot="title" >
+     <view style="font-size:14px;font-weight:550;max-width:130px !important;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{item.EquipmentModelName}}</view>
+     <span style="float:right;margin-top:-44rpx;color:{{color[item.AlarmStatus]}}">报警状态:{{AlarmStatus[item.AlarmStatus]}}</span>
+     <span style="float:right;margin-top:-10rpx;color:{{color1[item.SafeLevel]}}">安全等级:{{SafeLevel[item.SafeLevel]}}</span>
+   </view>
+   <view slot="bottom">
+    <view>{{'监测数据:' + item.MonitorItem + ','+ '监测数值:'+ item.MonitorValue}}</view>
+     <view>{{item.BuildingName + item.FloorNum+ '楼' +item.RoomNum +'房'}}</view>
+     <view>{{item.LogTime}}</view>
+   </view>
+     <view slot="footer" >
+   </view>
+</van-card>
+</view>
+<scroll-view class="bottom" wx:if="{{bottom}}">
+  <i-load-more tip="正在加载!" loading="true " wx:if="{{bottom}}"/>
+</scroll-view>
+<i-load-more  tip="已经到底啦!" loading="{{false}}" wx:if="{{!bottom}}" />
+  </van-tab>
+</van-tabs>
+
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />
+<van-notify id="van-notify" />
+</view>

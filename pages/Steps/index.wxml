@@ -1,0 +1,111 @@
+<!--pages/Steps/index.wxml-->
+<view style="margin-top:10px">
+<i-steps current="{{current}}">
+    <i-step   icon="barrage">
+        <view slot="title">
+           学校
+        </view>
+    </i-step>
+    <i-step icon="brush">
+        <view slot="title">
+           学院
+        </view>
+    </i-step>
+    <i-step  icon="collection">
+        <view slot="title">
+            大楼
+        </view>
+    </i-step>
+    <i-step  icon="collection">
+        <view slot="title">
+            楼层
+        </view>
+    </i-step>
+    <i-step  icon="collection">
+        <view slot="title">
+            实验室
+        </view>
+    </i-step>
+</i-steps>  
+</view>
+<view style="margin-top:30px">
+<van-cell title="学校" bind:click="uni" title-style="color:#66666" is-link value="{{uniData}}" />
+<van-cell bind:click="col" title="学院"  is-link="{{false}}"  value="{{colData}}" />
+<van-cell bind:click="bui" title="大楼"  is-link="{{false}}" value="{{buiData}}" />
+<van-cell bind:click="flo" title="楼层"  is-link="{{false}}" value="{{floData}}" />
+<van-cell bind:click="lab" title="实验室"  is-link="{{false}}" value="{{labData}}" />
+</view>
+<view class="btn" >
+<van-button bind:click="save" disabled="{{!save}}" type="primary" size="large">保存设置</van-button>
+</view>
+<van-popup
+  show="{{ show }}"
+  position="bottom"
+  custom-style="height: 30%;"
+  bind:close="close"
+>
+<van-picker
+  show-toolbar
+  title="学校"
+  columns="{{ uniList }}"
+  bind:cancel="close"
+  bind:confirm="confirmUni"
+/>
+</van-popup>
+<van-popup
+  show="{{ show1 }}"
+  position="bottom"
+  custom-style="height: 30%;"
+  bind:close="close"
+>
+<van-picker
+  show-toolbar
+  title="学院"
+  columns="{{ colList }}"
+  bind:cancel="close"
+  bind:confirm="confirmCol"
+/>
+</van-popup>
+<van-popup
+  show="{{ show2 }}"
+  position="bottom"
+  custom-style="height: 30%;"
+  bind:close="close"
+>
+<van-picker
+  show-toolbar
+  title="大楼"
+  columns="{{ buiList }}"
+  bind:cancel="close"
+  bind:confirm="confirmBui"
+/>
+</van-popup>
+<van-popup
+  show="{{ show3 }}"
+  position="bottom"
+  custom-style="height: 30%;"
+  bind:close="close"
+>
+<van-picker
+  show-toolbar
+  title="楼层"
+  columns="{{ floList }}"
+  bind:cancel="closeFlo"
+  bind:confirm="confirmFlo"
+/>
+</van-popup>
+<van-popup
+  show="{{ show4 }}"
+  position="bottom"
+  custom-style="height: 30%;"
+  bind:close="close"
+>
+<van-picker
+  show-toolbar
+  title="实验室"
+  columns="{{ labList }}"
+  bind:cancel="closeLab"
+  bind:confirm="confirmLab"
+/>
+</van-popup>
+<van-notify id="van-notify" />

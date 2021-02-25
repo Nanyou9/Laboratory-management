@@ -1,0 +1,91 @@
+<view class="bg">
+<view class="topnav">
+  <image src="/images/labsafe.jpg"></image>
+  </view>
+
+
+<van-sticky>
+  <van-search
+  value="{{ value }}"
+  placeholder="请输入安全规则名称"
+  input-align="center"
+  bind:change="onChange"
+  background="#f3f2f2"
+  shape="round"
+  bind:clear="frushData"
+  bind:search="onSearch"
+/>
+</van-sticky>
+<view class="content1">
+<view class="card" wx:for-items="{{userData}}" wx:key="index" >
+    <van-card 
+    desc="{{item.SafeRuleTitle}}" 
+    bottom="{{item.Report_NAME}}"
+    > 
+<view slot="title" >
+  <view style="font-size:14px;font-weight:550;max-width:130px !important;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{item.SafeRuleTypeName}}</view>
+</view>                                                                 
+  <view slot="bottom">
+    <view>{{item.UniversityName + item.CollegeName}}</view>
+  </view>
+    <view slot="footer" class="login">
+    <van-icon  bindtap="detail" color="#545454" size="40rpx" name="arrow" id="{{index}}" />
+  </view>
+</van-card>
+</view>
+</view>
+<scroll-view class="bottom" wx:if="{{bottom}}">
+  <i-load-more tip="正在加载!" loading="true " wx:if="{{bottom}}"/>
+</scroll-view>
+<i-load-more  tip="已经到底啦!" loading="{{false}}" wx:if="{{!bottom}}" />
+</view>
+<van-dialog id="van-dialog" />
+<van-toast id="van-toast" />
+<view  class="add" >
+  <van-icon name="search" size="60rpx" color="#848484"  bindtap="choose"/>
+</view>
+<van-popup
+  show="{{ show }}"
+  position="right"
+  custom-style="width: 80vw;"
+  bind:close="onClose"
+>
+ <view class="right">
+   <view class="sp">所属学校:</view>
+   <view class="uni">
+      <view class="btn">
+       <van-button round bind:click="uni" wx:for-items="{{treeData}}" wx:key="{{index}}"  type="primary" size="small" id="{{index}}">{{item.text}}</van-button>
+      </view>
+    </view>
+   <view class="sp">所属学院:</view>
+    <view class="col " >
+      <view class="btn" wx:if="{{collegeDataNull}}">
+       <van-button round bind:click="col" wx:for-items="{{collegeData}}" wx:key="{{index}}"  type="info" size="small" id="{{index}}">{{item.text}}</van-button>
+      </view>
+      <i-divider wx:if="{{!tapuni}}" content="请先选择学校" color="#2d8cf0" lineColor="#2d8cf0"></i-divider>
+     
+      <i-divider wx:if="{{!collegeDataNull&&tapuni}}" content="加载已经完成,没有其他数据" color="#2d8cf0" lineColor="#2d8cf0"></i-divider>
+    </view>
+   <view  class="sp">所属大楼:</view>
+   <view class="bui ">
+      <view class="btn" wx:if="{{buildingDataNull}}">
+       <van-button round  bind:click="bui"  wx:for-items="{{buildingData}}" wx:key="{{index}}"  type="warning" size="small" id="{{index}}">{{item.text}}</van-button>
+      </view>
+      <i-divider wx:if="{{!tapcol}}" content="请先选择学院" color="#ed3f14" lineColor="#ed3f14"></i-divider>
+      <i-divider wx:if="{{!buildingDataNull&&tapcol}}" content="加载已经完成,没有其他数据" color="#ed3f14" lineColor="#ed3f14"></i-divider>
+    </view>
+   <view class="sp">所属楼层:</view>
+   <view class="flo ">
+      <view class="btn" wx:if="{{floorDataNull}}">
+       <van-button round bind:click="flo" wx:for-items="{{floorData}}" wx:key="{{index}}"  color="#08a28d" size="small" id="{{index}}">{{item.text}}</van-button>
+      </view>
+      <i-divider wx:if="{{!tapbui}}" content="请先选择大楼" color="#08a28d" lineColor="#08a28d"></i-divider>
+      <i-divider wx:if="{{!floorDataNull&&tapbui}}" content="加载已经完成,没有其他数据" color="#08a28d" lineColor="#08a28d"></i-divider>
+    </view>
+ </view>
+ <view class="container">
+       <i-spin  wx:if="{{loadcol}}" fix>加载中...</i-spin>
+      </view>
+</van-popup>
+
+

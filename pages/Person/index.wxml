@@ -1,0 +1,60 @@
+<view class="bg">
+<view class="topnav">
+  <image src="/images/person.jpg"></image>
+  </view>
+<van-sticky>
+  <van-search
+  value="{{ value }}"
+  placeholder="请输入人员名称"
+  input-align="center"
+  bind:change="onChange"
+  background="#f3f2f2"
+  shape="round"
+  bind:clear="frushData"
+  bind:search="onSearch"
+/>
+</van-sticky>
+<view class="content1">
+<view class="card" wx:for-items="{{userData}}" wx:key="index" >
+    <van-card 
+    bindtap="detail"
+    id="{{index}}"
+    > 
+<view slot="title" >
+  <view style="font-size:14px;font-weight:550;max-width:130px !important;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{item.RealName}}</view>
+  <span style="float:right;margin-top:-44rpx;color:green">UserID:{{item.UserID}}</span>
+</view>                                                                 
+  <view slot="bottom">
+    <view>{{item.Gender}}</view>
+    <view>{{item.Phone}}</view>
+  </view>
+    <view slot="footer" class="login">
+    <van-icon color="#545454" size="40rpx" name="arrow" />
+  </view>
+</van-card>
+</view>
+</view>
+<scroll-view class="bottom" wx:if="{{bottom}}">
+  <i-load-more tip="正在加载!" loading="true " wx:if="{{bottom}}"/>
+</scroll-view>
+<i-load-more  tip="已经到底啦!" loading="{{false}}" wx:if="{{!bottom}}" />
+</view>
+<van-dialog id="van-dialog" />
+<van-toast id="van-toast" />
+<!-- <view  class="add" >
+  <van-icon name="search" size="60rpx" color="#848484"  bindtap="choose"/>
+</view> -->
+<van-popup
+  show="{{ show }}"
+  position="right"
+  custom-style="width: 80vw;"
+  bind:close="onClose"
+>
+ <view class="right">
+   <view>所属学校:</view>
+   <view>所属学院:</view>
+   <view>所属大楼:</view>
+   <view>所属楼层:</view>
+ </view>
+</van-popup>
+

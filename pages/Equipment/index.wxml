@@ -1,0 +1,49 @@
+<view class="bg">
+<view class="topnav">
+  <image src="/images/equipment.jpg"></image>
+  </view>
+  <van-sticky>
+  <van-search
+  value="{{ value }}"
+  placeholder="请输入设备"
+  input-align="center"
+  bind:change="onChange"
+  background="#f3f2f2"
+  shape="round"
+  bind:clear="frushData"
+  bind:search="onSearch"
+/>
+</van-sticky>
+<view class="content1">
+<view class="card" wx:for-items="{{userData}}" wx:key="index" >
+    <van-card 
+    bindtap="detail"
+    id="{{index}}"
+    desc="{{item.REPORT_DETAIL}}" 
+    bottom="{{item.Report_NAME}}"
+    
+    > 
+<view slot="title" >
+  <view style="font-size:14px;font-weight:550;max-width:130px !important;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{item.EquipmentModelName}}</view>
+  <span style="float:right;margin-top:-44rpx;color:green">{{item.EquipmentTypeName}}</span>
+</view>                                                                 
+  <view slot="bottom">
+    <view>{{item.RoomName}}</view>
+    <view>{{item.BuildingName + item.FloorNum+ '楼' +item.RoomNum +'房'}}</view>
+  </view>
+    <view  slot="footer" class="login">
+    <van-icon  color="#545454" size="40rpx" name="arrow"  />
+    </view>
+</van-card>
+</view>
+</view>
+<scroll-view class="bottom" wx:if="{{bottom}}">
+  <i-load-more tip="正在加载!" loading="true " wx:if="{{bottom}}"/>
+</scroll-view>
+<i-load-more  tip="已经到底啦!" loading="{{false}}" wx:if="{{!bottom}}" />
+</view>
+<van-dialog id="van-dialog" />
+<van-toast id="van-toast" />
+
+
+

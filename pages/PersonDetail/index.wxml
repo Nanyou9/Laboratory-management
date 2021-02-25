@@ -1,0 +1,56 @@
+<view class="bg">
+  <view class="topnav">
+  <image src="/images/labdetail.jpg"></image>
+  </view>
+<view class="fields">
+<van-cell-group input-class="inp">
+  <van-field
+  input-class="inp"
+    value="{{ detailData.RealName }}"
+    border="{{ false }}"
+    type="textarea"
+    autosize
+    label="姓名:" 
+  />
+  <van-fielda
+    input-class="inp"
+    border="{{ false }}"
+    readonly="true"
+    value="{{ detailData.UserNo }}"
+    label="人员编号:"
+  />
+  <van-field
+    value=""
+    border="{{ false }}"
+    value="{{ detailData.Gender }}"
+    readonly="true"
+    label="性别:"
+  />
+  <van-field
+    value="{{ detailData.UniversityName }}"
+    border="{{ false }}"
+    readonly="true"
+    type="textarea"
+    autosize
+    label="所属学校:"
+  />
+  <van-field
+    value="{{ detailData.CollegeName }}"
+    border="{{ false }}"
+    readonly="true"
+    label="所属学院:"
+  />
+  <van-field
+    value="{{ detailData.Phone }}"
+    border="{{ false }}"
+    readonly="true"
+    type="textarea"
+    label="手机:"
+    autosize
+  />
+</van-cell-group>
+</view>
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />
+<van-notify id="van-notify" />
+</view>

@@ -1,0 +1,68 @@
+<view class="bg">
+  <view class="topnav">
+  <image src="/images/labdetail.jpg"></image>
+  </view>
+<view class="fields" style="border:1px solid {{detailData.GuardStatus==1 ? 'green':'red'}};">
+<van-cell-group input-class="inp">
+  <van-field
+  input-class="inp"
+    value="{{detailData.EquipmentTypeName + ':' +  detailData.EquipmentModelName }}"
+    border="{{ false }}"
+    type="textarea"
+    autosize
+    label="门禁名称:" 
+  />
+  <van-field
+  input-class="inp "
+    value="{{detailData.GuardStatus==1 ? '开启':'关闭' }}"
+    border="{{ false }}"
+    type="textarea"
+    autosize
+    label="运行状态:" 
+  />
+  <van-field
+    value=""
+    border="{{ false }}"
+    value="{{ detailData.RoomName }}"
+    readonly="true"
+    label="实验室名称:"
+  />
+  <van-fielda
+    input-class="inp"
+    border="{{ false }}"
+    readonly="true"
+    value="{{ detailData.RoomNum }}"
+    label="实验室编号:"
+  />
+  <van-field
+    value="{{ detailData.BuildingName }}"
+    border="{{ false }}"
+    readonly="true"
+    type="textarea"
+    autosize
+    label="所属学校:"
+  />
+  <van-field
+    value="{{ detailData.CollegeName }}"
+    border="{{ false }}"
+    readonly="true"
+    label="所属学院:"
+  />
+  <van-field
+    value="{{ detailData.BuildingName }}"
+    border="{{ false }}"
+    readonly="true"
+    label="所属大楼:"
+  />
+  <van-field
+    value="{{ detailData.FloorNum + '楼'}}"
+    border="{{ false }}"
+    readonly="true"
+    label="所属楼层:"
+  />
+</van-cell-group>
+</view>
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />
+<van-notify id="van-notify" />
+</view>

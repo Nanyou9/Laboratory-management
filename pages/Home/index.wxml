@@ -1,0 +1,39 @@
+<!--index.wxml-->
+<view style="position: fixed;z-index:999;width:100vw;top:12vh;display:flex;justify-content: center;align-items: center;flex-direction:column;">
+  <image style="width:250rpx;height:230rpx;box-shadow: 2px 2px 3px 0px #444;border-radius: 100%;" src="/images/logo.png"></image>
+<view class="logo">西南大学智慧实验室</view>
+</view>
+
+<view class="bg">
+<view class="container">
+  <view class="topnav">
+  <image src="../../images/home.jpg"></image>
+  </view>
+  
+  <view class="content">
+  <view class="grid">
+    <van-grid column-num="3" border="{{false}}" square >
+      <van-grid-item  url="/pages/index/index" use-slot >
+      <view style="font-size:30px;font-weight: 550;" class="iconfont icon-microscope"></view>
+      <view style="font-size:12px;margin-top:5px;color:#545454">实验室管理</view>
+      </van-grid-item>
+      <van-grid-item  url="/pages/Equipment/index" use-slot >
+        <van-icon size="30px" custom-style="font-weight:550" name="cluster-o" />
+      <view style="font-size:12px;margin-top:5px;color:#545454">设备管理</view>
+      </van-grid-item>
+      <van-grid-item   use-slot >
+      <image src="../../images/bar.png" style="width: 32px;height:35px;margin-top: -4px;" ></image>
+      <view style="font-size:12px;margin-top:4px;color:#545454">数据报表</view>
+      </van-grid-item>
+    </van-grid>
+  </view>
+  
+  <!-- <view class="grid">
+    <van-grid column-num="3" border="{{false}}">
+      <van-grid-item icon="exchange" text="指派核查"  ></van-grid-item>
+    </van-grid>
+  </view> -->
+</view>
+</view>
+</view>
+<van-toast id="van-toast" />

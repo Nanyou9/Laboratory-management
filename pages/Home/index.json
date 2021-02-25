@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "西南大学智慧实验室",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "van-grid": "@vant/weapp/grid/index",
+    "van-grid-item": "@vant/weapp/grid-item/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-toast": "@vant/weapp/toast/index"
+  }
+  }

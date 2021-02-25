@@ -1,0 +1,29 @@
+{
+  "pages":[
+    "pages/Home/index",
+    "pages/Steps/index",
+    "pages/index/index",
+    "pages/Login/index",
+    "pages/LabSetting/index",
+    "pages/LabSettingDetail/index",
+    "pages/Person/index",
+    "pages/PersonDetail/index",
+    "pages/Search/index",
+    "pages/SearchDetail/index",
+    "pages/AccessControl/index",
+    "pages/AccessControlDetail/index",
+    "pages/Equipment/index",
+    "pages/LabEquipment/index",
+    "pages/EquipmentDetail/index",
+    "pages/RoomRule/index",
+    "pages/RoomRuleDetail/index",
+    "pages/Mine/index"
+  ],
+  "window":{
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#f8f8f8",
+    "navigationBarTitleText": "西南大学智慧实验室",
+    "navigationBarTextStyle":"black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

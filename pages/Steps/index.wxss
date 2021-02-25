@@ -1,0 +1,10 @@
+/* pages/Steps/index.wxss */
+.van-cell{
+  margin-top:40rpx;
+}
+.btn{
+  position: fixed;
+  bottom:0;
+  left:0;
+  width:100vw;
+}

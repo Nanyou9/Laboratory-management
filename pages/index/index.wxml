@@ -1,0 +1,216 @@
+<!--index.wxml-->
+<view style="position: fixed;z-index:3;width:100vw;top:12vh;display:flex;justify-content: center;align-items: center;flex-direction:column;">
+  <image style="width:250rpx;height:230rpx;box-shadow: 2px 2px 3px 0px #444;border-radius: 100%;" src="/images/logo.png"></image>
+<view class="logo">西南大学实验室管理</view>
+</view>
+<image bindtap="showPopup" src="../../images/set.png" style="position: fixed;width:35px;height:35px;top:25px;right:25px;z-index:3;"></image>
+<view class="bg">
+<view class="container">
+  <view class="topnav">
+  <image src="../../images/univ.jpg"></image>
+  </view>
+  
+  <view class="content">
+  <view class="grid">
+    <van-grid column-num="3" border="{{false}}" square >
+      <van-grid-item bindtap="grid1"  use-slot >
+      <view style="font-size:30px;font-weight: 550;" class="iconfont icon-microscope"></view>
+      <view style="font-size:12px;margin-top:5px;color:#545454;overflow:hidden;text-overflow:ellipsis; white-space: nowrap;">实验室基础信息</view>
+      </van-grid-item>
+      <van-grid-item bindtap="grid2"  url="" use-slot >
+      <view style="font-size: 41px;margin-top: -5px;" class="iconfont icon-renyuan"></view>
+      <view style="font-size:12px;margin-top:-2px;color:#545454">人员管理</view>
+      </van-grid-item>
+      <van-grid-item bindtap="grid3"  url="" use-slot >
+      <view style="font-size:30px;font-weight: 600;" class="iconfont icon-menjinguanli"></view>
+      <view style="font-size:12px;margin-top:5px;color:#545454">门禁管理</view>
+      </van-grid-item>
+      <van-grid-item bindtap="grid4"  url="" use-slot >
+      <view style="font-size:30px;font-weight: 550;" class="iconfont icon-jiance-11"></view>
+      <view style="font-size:12px;margin-top:5px;color:#545454">监测查询</view>
+      </van-grid-item>
+      <!-- <van-grid-item bindtap="grid1"  url="/pages/RoomRule/index" use-slot >
+      <view style="font-size:30px;font-weight: 600;" class="iconfont .icon-shiyanshianquan"></view>
+      <view style="font-size:12px;margin-top:5px;color:#545454">实验室安全管理</view>
+      </van-grid-item> -->
+      <van-grid-item bindtap="grid5"  url="" use-slot >
+      <view style="font-size:30px;font-weight: 600;" class="iconfont .icon-shebei"></view>
+      <view style="font-size:12px;margin-top:5px;color:#545454">设备管理</view>
+      </van-grid-item>
+      <van-grid-item bindtap="grid6"  url="" use-slot >
+        <van-icon name="close" size="30px" custom-style="font-weight:550;margin-top:-4px"/>
+      <view style="font-size:12px;margin-top:9px;color:#545454">退出登录</view>
+      </van-grid-item>
+    </van-grid>
+  </view>
+  
+  <!-- <view class="grid">
+    <van-grid column-num="3" border="{{false}}">
+      <van-grid-item icon="exchange" text="指派核查"  ></van-grid-item>
+    </van-grid>
+  </view> -->
+</view>
+</view>
+</view>
+<van-toast id="van-toast" />
+<van-popup show="{{ showRight }}"  position="left"   custom-style="width: 85vw;min-height:100vh" bind:close="onClose">
+  <van-tabs active="{{ active }}" bind:change="changeTab">
+  <van-tab title="根据名称索引">
+  <van-sticky>
+  <van-search
+  value="{{ value }}"
+  placeholder="请输入实验室名称"
+  input-align="center"
+  bind:change="onChange"
+  background="#fff"
+  shape="round"
+  bind:clear="clear"
+  bind:search="onSearch"
+/>
+</van-sticky>
+<view style="margin-top:8px;margin-bottom:8px" wx:if="{{input}}">历史记录:</view>
+<view wx:if="{{input}}">
+  <van-cell wx:for-items="{{history}}" wx:key="index"  icon="clock-o"  value="{{item.lab +'房'}}" >
+    <!-- <van-icon slot="right-icon" name="delete-o" /> -->
+    <view bindtap="history" slot="title" id="{{index}}">{{item.name}}</view>
+    <van-icon bindtap="delate" slot="right-icon" name="close" class="custom-icon"  style="margin-left:5px" id="{{index}}"/>
+  </van-cell>
+</view>
+<view class="card" wx:for-items="{{userData}}" wx:key="index" >
+    <van-card 
+    desc="{{item.REPORT_DETAIL}}" 
+    bottom="{{item.Report_NAME}}"
+    bindtap="set"
+    id="{{index}}"
+    > 
+<view slot="title" >
+  <view style="font-size:14px;font-weight:550;max-width:130px !important;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{item.Name}}</view>
+  <span style="float:right;margin-top:-44rpx;color:green">{{item.UniversityName}}</span>
+</view>
+  <view slot="bottom">
+    <view>{{item.CollegeName}}</view>
+    <view>{{item.BuildingName + item.FloorNum+ '楼' +item.RoomNum +'房'}}</view>
+  </view>
+</van-card>
+</view>
+<scroll-view class="bottom" wx:if="{{bottom}}">
+  <i-load-more tip="正在加载!" loading="true " wx:if="{{bottom}}"/>
+</scroll-view>
+<i-load-more  tip="已经到底啦!" loading="{{false}}" wx:if="{{!bottom}}" />
+</van-tab>
+  <van-tab title="根据楼层索引">
+    <i-steps current="{{current}}" style="margin-top:40px">
+    <i-step   icon="barrage">
+        <view slot="title">
+           学校
+        </view>
+    </i-step>
+    <i-step icon="brush">
+        <view slot="title">
+           学院
+        </view>
+    </i-step>
+    <i-step  icon="collection">
+        <view slot="title">
+            大楼
+        </view>
+    </i-step>
+    <i-step  icon="collection">
+        <view slot="title">
+            楼层
+        </view>
+    </i-step>
+    <i-step  icon="collection">
+        <view slot="title">
+            实验室
+        </view>
+    </i-step>
+</i-steps>  
+<view style="margin-top:30px">
+<van-cell title="学校" bind:click="uni" title-style="color:#66666" is-link value="{{uniData}}" />
+<van-cell bind:click="col" title="学院"  is-link="{{false}}"  value="{{colData}}" />
+<van-cell bind:click="bui" title="大楼"  is-link="{{false}}" value="{{buiData}}" />
+<van-cell bind:click="flo" title="楼层"  is-link="{{false}}" value="{{floData}}" />
+<van-cell bind:click="lab" title="实验室"  is-link="{{false}}" value="{{labData}}" />
+</view>
+<view class="btn" >
+<van-button bind:click="save" disabled="{{!save}}" type="primary" size="large">保存设置</van-button>
+</view>
+  </van-tab>
+</van-tabs>
+ 
+</van-popup>
+
+<van-notify id="van-notify" />
+<van-toast id="van-toast" />
+<van-popup
+  show="{{ show }}"
+  position="bottom"
+  custom-style="height: 30%;"
+  bind:close="close"
+>
+<van-picker
+  show-toolbar
+  title="学校"
+  columns="{{ uniList }}"
+  bind:cancel="close"
+  bind:confirm="confirmUni"
+/>
+</van-popup>
+<van-popup
+  show="{{ show1 }}"
+  position="bottom"
+  custom-style="height: 30%;"
+  bind:close="close"
+>
+<van-picker
+  show-toolbar
+  title="学院"
+  columns="{{ colList }}"
+  bind:cancel="closeCol"
+  bind:confirm="confirmCol"
+/>
+</van-popup>
+<van-popup
+  show="{{ show2 }}"
+  position="bottom"
+  custom-style="height: 30%;"
+  bind:close="close"
+>
+<van-picker
+  show-toolbar
+  title="大楼"
+  columns="{{ buiList }}"
+  bind:cancel="closeBui"
+  bind:confirm="confirmBui"
+/>
+</van-popup>
+<van-popup
+  show="{{ show3 }}"
+  position="bottom"
+  custom-style="height: 30%;"
+  bind:close="close"
+>
+<van-picker
+  show-toolbar
+  title="楼层"
+  columns="{{ floList }}"
+  bind:cancel="closeFlo"
+  bind:confirm="confirmFlo"
+/>
+</van-popup>
+<van-popup
+  show="{{ show4 }}"
+  position="bottom"
+  custom-style="height: 30%;"
+  bind:close="close"
+>
+<van-picker
+  show-toolbar
+  title="实验室"
+  columns="{{ labList }}"
+  bind:cancel="close"
+  bind:confirm="confirmLab"
+/>
+</van-popup>
+<van-dialog id="van-dialog" />

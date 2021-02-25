@@ -1,0 +1,33 @@
+<view class="bg">
+  <view class="topnav">
+  <image src="/images/labsafe.jpg"></image>
+  </view>
+<view class="fields">
+<van-cell-group input-class="inp">
+  <van-field
+  input-class="inp"
+    value="{{ detailData.Title }}"
+    border="{{ false }}"
+    type="textarea"
+    readonly="true"
+    autosize
+    label="安全规则名称:" 
+  />
+  <van-field
+  input-class="inp"
+    border="{{ false }}"
+    type="textarea"
+    readonly="true"
+    autosize
+    label="安全规则详情:">
+</van-field>
+
+  <view style="margin-left: 200rpx;margin-top: -101rpx;">
+    <rich-text nodes="{{detailData.SafeRule}}"></rich-text>
+  </view>
+</van-cell-group>
+</view>
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />
+<van-notify id="van-notify" />
+</view>

@@ -1,0 +1,68 @@
+  <view class="bg">
+  <view class="topnav">
+  <image src="/images/labdetail.jpg"></image>
+  </view>
+<view class="fields">
+<van-cell-group input-class="inp">
+  <van-field
+  input-class="inp"
+    value="{{ detailData.RoomCode }}"
+    border="{{ false }}"
+    type="textarea"
+    autosize
+    label="实验室编码:" 
+  />
+  <van-fielda
+    input-class="inp"
+    border="{{ false }}"
+    readonly="true"
+    value="{{ detailData.RoomNum }}"
+    label="实验室编号:"
+  />
+  <van-field
+    value=""
+    border="{{ false }}"
+    value="{{ detailData.Name }}"
+    readonly="true"
+    label="实验室名称:"
+  />
+  <van-field
+    value="{{ detailData.UniversityName }}"
+    border="{{ false }}"
+    readonly="true"
+    type="textarea"
+    autosize
+    label="所属学校:"
+  />
+  <van-field
+    value="{{ detailData.CollegeName }}"
+    border="{{ false }}"
+    readonly="true"
+    label="所属学院:"
+  />
+  <van-field
+    value="{{ detailData.BuildingName }}"
+    border="{{ false }}"
+    readonly="true"
+    label="所属大楼:"
+  />
+  <van-field
+    value="{{ detailData.FloorNum + '楼'}}"
+    border="{{ false }}"
+    readonly="true"
+    label="所属楼层:"
+  />
+  <van-field
+    value="{{ detailData.Note }}"
+    border="{{ false }}"
+    readonly="true"
+    type="textarea"
+    label="实验室简介:"
+    autosize
+  />
+</van-cell-group>
+</view>
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />
+<van-notify id="van-notify" />
+</view>
