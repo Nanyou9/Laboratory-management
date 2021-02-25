@@ -26,20 +26,20 @@ Page({
         })
         console.log(res)
       },
-      // fail(res) {
-      //   if(that.data.password==''||that.data.username==''){
-      //     Toast.loading({
-      //       message: '登录失效或未登录...',
-      //       forbidClick: true,
-      //     });
-      //      setTimeout(()=>{
-      //        Toast.clear
-      //        wx.reLaunch({
-      //          url: '/pages/Login/index'
-      //        })
-      //    },2000)
-      //   }
-      // }
+      fail(res) {
+        if(that.data.password==''||that.data.username==''){
+          Toast.loading({
+            message: '登录失效或未登录...',
+            forbidClick: true,
+          });
+           setTimeout(()=>{
+             Toast.clear
+             wx.reLaunch({
+               url: '/pages/Login/index'
+             })
+         },2000)
+        }
+      }
     })
   },
   

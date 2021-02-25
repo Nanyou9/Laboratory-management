@@ -32,12 +32,20 @@ Page({
          }else if(this.data.password == ""){
             Toast('请输入密码');
          }else{
-            
+            wx.setStorage({
+               key: 'key',
+               data: [
+                   that.data.username,
+                   that.data.password,
+               ],
+               success(res) {
+                   console.log(res)
+                }
+           })
                         Toast.success('登录成功');
-                        var staff = JSON.stringify({username:'guest',password:123456})
                         setTimeout(()=>{
                             wx.reLaunch({
-                             url: '/pages/Home/index?staffData=' + staff,
+                             url: '/pages/Home/index'
                            })
                         },1000)
                     }
